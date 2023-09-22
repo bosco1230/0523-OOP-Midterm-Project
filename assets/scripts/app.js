@@ -9,6 +9,9 @@ export class App {
   static addProductToCart(product) {
     this.shop.cart.addProduct(product);
   }
+  static removeProductFromCart(product) {
+    this.shop.cart.removeProduct(product);
+  }
 }
 
 App.init();
