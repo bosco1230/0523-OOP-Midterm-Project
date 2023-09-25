@@ -83,7 +83,7 @@ button:active {
 
 .product-item img {
   width: 100%;
-  height: 17rem;
+  height: 18rem;
   object-fit: fill;
   border-radius: 20px;
 }
@@ -222,4 +222,8 @@ height:80vh;
 }
 #myForm input{
   margin:0.3rem
+}
+.show-popup{
+  margin-top:1vh;
+  
 }

@@ -9,6 +9,12 @@ export class ShoppingCart {
       this.updateTotal();
     }
     clearCart() {
+      this._items.forEach((item) => {
+        item.quantity = 0;
+      });
+    
+      this.updateItemQuantity();
+    
       this._items = [];
       this.updateTotal();
     }
@@ -30,7 +36,13 @@ export class ShoppingCart {
         return accumulator + product.price;
       }, 0);
     }
-  
+    updateItemQuantity() {
+      const quantitySpans = document.querySelectorAll(".quantity");
+    
+      quantitySpans.forEach((span) => {
+        span.textContent = "0";
+      });
+    }    
     updateTotal() {
         const spanTotal = document.getElementById("totalCart");
         spanTotal.textContent = `$${this.total}`;
@@ -89,14 +101,18 @@ export class ShoppingCart {
         const myForm = section.querySelector("#myForm");
    
         myForm.addEventListener("submit", (event) => {
-          event.preventDefault(); 
-    
+          event.preventDefault();
+        
           if (this.cartCount === 0) {
             errorModal.style.display = "block";
           } else {
-            this.clearCart(); 
+            this._items.forEach((item) => {
+              item.quantity = 0;
+            });
+        
+            this.clearCart();
             successModal.style.display = "block";
-            modal.style.display = "none"; 
+            modal.style.display = "none";
           }
         });
     
